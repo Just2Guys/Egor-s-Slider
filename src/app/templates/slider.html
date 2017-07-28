@@ -1,0 +1,19 @@
+<div id="container" [ngStyle] = "{'width':'calc(' + Images.length * 100 + '%' + ')'}">
+  <div id="slider" *ngFor = "let image of Images" [ngStyle] = "{'width':'calc(100%/' + Images.length + ')' }">
+    <div id="image" [ngStyle] = "{ 'background-image':'url(' + image + ')' }"></div>
+  </div>
+</div>
+<div id="left"><div id="test" (click) = "Slide(CurrentPosition - 1)"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+</div>
+<div id="right"><div id="test" (click) = "Slide(CurrentPosition + 1)"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+</div>
+<div id="bottom">
+  <div *ngFor = "let image of Images; let i = index" id="beforeBall">
+   <div *ngIf = "i + 1 == CurrentPosition">
+    <div id="circle" [ngStyle] = "{ 'background-color':'#fff' }" (click) = "Slide(i + 1)"></div>
+   </div>
+   <div *ngIf = "i + 1 != CurrentPosition">
+      <div id="circle" [ngStyle] = "{ 'background-color':'rgba(0, 0, 0, 0)' }" (click) = "Slide(i + 1)"></div>
+   </div>
+  </div>
+</div>
